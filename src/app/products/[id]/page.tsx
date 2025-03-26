@@ -12,7 +12,7 @@ export default function Products() {
   const params = useParams();
   console.log(typeof params.id);
   const router = useRouter();
-  const id = params?.id ? Number(params.id) : 0;
+  const id: number = params?.id ? Number(params.id) : 0;
 
   async function fetchData() {
     await fetch("https://fakestoreapi.com/products/" + id)
@@ -24,7 +24,7 @@ export default function Products() {
   }, []);
 
   function saveProduct(id: number) {
-    const data = localStorage.getItem("ProductsId") || "{}";
+    const data = localStorage.getItem("ProductsId") || "[]";
     const storedData = JSON.parse(data) || [];
 
     storedData.push(id);
@@ -46,13 +46,15 @@ export default function Products() {
       {data ? (
         <>
           <div className="md:flex justify-center ml-[20px] mr-[20px] mt-[20px]  border p-[20px] rounded-[10px]">
-            <Image
-              src={data.image ? data.image : "/"}
-              width={200}
-              height={200}
-              alt="Photo product"
-              className="max-w-[200px] max-h-[250px] mr-[20px]"
-            />
+            <div className="flex justify-center">
+              <Image
+                src={data.image ? data.image : "/"}
+                width={200}
+                height={200}
+                alt="Photo product"
+                className="max-w-[200px] max-h-[250px] mr-[20px]"
+              />
+            </div>
             <div className="mr-[24px] sm:mt-[60px] md:border-l  pl-[20px] pr-[20px]">
               <p className="text-[13px] text-[#d3d3d3]">Title:</p>
               <p className="max-w-[400px]"> {data.title}</p>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Product from "@/interface/Product"
+import Product from "@/interface/Product";
 import { useEffect, useState } from "react";
 
 export default function Home() {

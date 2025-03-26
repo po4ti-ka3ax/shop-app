@@ -12,7 +12,6 @@ export default function Cart() {
   const [reload, setReload] = useState(true);
   const totalSumArr: number[] = [];
   let totalSum;
-  // console.log(cartData);
 
   useEffect(() => {
     const cartData = JSON.parse(localStorage.getItem("ProductsId") || "{}");
@@ -28,9 +27,7 @@ export default function Cart() {
       data.forEach((el) => {
         totalSumArr.push(el.price);
       });
-      totalSum = totalSumArr.reduce(function (a, b) {
-        return a + b;
-      });
+      totalSum = totalSumArr.reduce((a, b) => a + b, 0);
 
       setProducts(data);
     });
@@ -64,7 +61,9 @@ export default function Cart() {
       </div>
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl::grid-cols-4  text-center gap-[30px] p-[10px]">
-        {product ? (
+        {product.length === 0 ? (
+          <p className="text-[#d3d3d3]">Cart empty</p>
+        ) : (
           product.map((el: Product) => (
             <div
               key={el.id + Math.random()}
@@ -96,8 +95,6 @@ export default function Cart() {
               </div>
             </div>
           ))
-        ) : (
-          <p className="text-[#d3d3d3]">Cart empty</p>
         )}
       </div>
     </div>
