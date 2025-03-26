@@ -27,11 +27,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <main >
-                <h1 className="text-[30px] text-center">Shop-app</h1>
-      <div className="max-w-6xl m-auto pt-[20px] pb-[20px]">
-        {children}
-      </div>
+        <main>
+          <h1 className="text-[30px] text-center">Shop-app</h1>
+          <div className="max-w-6xl m-auto pt-[20px] pb-[20px]">{children}</div>
         </main>
       </body>
     </html>
